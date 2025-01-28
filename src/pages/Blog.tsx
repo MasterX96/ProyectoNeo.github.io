@@ -74,30 +74,36 @@ export const blogPosts = [
     title: '¿Cómo podés ser parte del proyecto?',
     excerpt: 'Descubre cómo unirte a esta iniciativa y recibir beneficios por tu aporte.',
     content: `¡Tu participación es fundamental para el éxito de este proyecto! En vez de tirar tus latas a la basura, podés ser parte de esta revolución en el reciclaje de Argentina.
-
+<br>
+<br>
     ¿Cómo participar?
-    1. Guardá tus latas en una bolsa separada
+    <br>
+    1. Guardá tus latas en una bolsa separada 
     2. Contactate conmigo por Instagram
     3. ¡Coordinaremos para retirar tus latas!
-
+<br>
+<br>
     Beneficios de participar:
+    <br>
     - Serás reconocido como líder en sostenibilidad
     - Recibirás actualizaciones en tiempo real del impacto de tus donaciones
     - Formarás parte de un proyecto revolucionario
     - Aparecerás en nuestro ranking de contribuyentes
 
     Descubre a quienes ya son parte:
+    <br>
 
     🌟 Lucía Robledo (@robledo_lu)
     Propietaria de Lokita Barber (@lokitabarber)
     Una de nuestras primeras colaboradoras, contribuyendo activamente desde su barbería.
-
+<br>
     🥁 Lucas de Tambores LS (@tamboresls)
     Artesano local que transforma su pasión por la música en acción ambiental, donando regularmente sus latas al proyecto.
-
+<br>
     🌿 Lauti (@lautiii_97)
     Un ejemplo de compromiso constante con el medio ambiente, aportando regularmente a nuestra causa.
-
+<br>
+<br>
     ¡Vos también podés ser parte de esta historia! No dejes que tus latas terminen en la basura cuando pueden ser parte de algo más grande.`,
     imageUrl: 'https://images.unsplash.com/photo-1544465544-1b71aee9dfa3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'
   }
