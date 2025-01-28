@@ -5,7 +5,7 @@ export const blogPosts = [
   {
     id: '1',
     title: '¿Quién está detrás del desafío?',
-    excerpt: 'Conoce a Neo, el emprendedor apasionado por el medio ambiente detrás de este proyecto.',
+    excerpt: 'Conoce a Neo, el emprendedor detrás de este proyecto.',
     content: `¡Hola! Soy Neo, un emprendedor apasionado por crear impacto positivo en el mundo. Mi misión es combinar el emprendimiento con la sostenibilidad para generar cambios significativos en nuestra sociedad.
 
     Mi pasión por emprender va más allá de los negocios tradicionales; busco iniciativas que aporten al bienestar humano y la preservación de nuestro planeta. Este desafío de reciclaje es solo el comienzo de una serie de proyectos que buscan inspirar y movilizar a la comunidad hacia un futuro más sostenible.
