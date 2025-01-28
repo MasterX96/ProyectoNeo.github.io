@@ -29,9 +29,10 @@ export const dailyData: DailyData[] = [
   { day: 21, date: '21/01/2025', cans: 1036 },
   { day: 22, date: '22/01/2025', cans: 1178 },
   { day: 23, date: '23/01/2025', cans: 276 },
-  { day: 25, date: '24/01/2025', cans: 676 },
-  { day: 26, date: '25/01/2025', cans: 753 },
-  { day: 27, date: '26/01/2025', cans: 776 }
+  { day: 24, date: '24/01/2025', cans: 676 },
+  { day: 25, date: '25/01/2025', cans: 753 },
+  { day: 26, date: '26/01/2025', cans: 776 },
+  { day: 27, date: '27/01/2025', cans: 417 }
 ];
 
 // Cálculos útiles
