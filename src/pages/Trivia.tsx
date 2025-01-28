@@ -13,8 +13,7 @@ const questions = [
       "Infinitamente"
     ],
     correctAnswer: 3,
-    explanation: "El aluminio es 100% reciclable y puede ser reciclado infinitamente sin perder su calidad.",
-    image: "/images/aluminum-recycling.png"
+    explanation: "El aluminio es 100% reciclable y puede ser reciclado infinitamente sin perder su calidad."
   },
   {
     id: 2,
@@ -26,8 +25,7 @@ const questions = [
       "95%"
     ],
     correctAnswer: 3,
-    explanation: "Reciclar aluminio ahorra aproximadamente el 95% de la energía necesaria para producir aluminio nuevo.",
-    image: "/images/energy-saving.png"
+    explanation: "Reciclar aluminio ahorra aproximadamente el 95% de la energía necesaria para producir aluminio nuevo."
   },
   {
     id: 3,
@@ -39,99 +37,7 @@ const questions = [
       "No se descompone naturalmente"
     ],
     correctAnswer: 2,
-    explanation: "Una lata de aluminio tarda entre 200 y 500 años en descomponerse en la naturaleza.",
-    image: "/images/decomposition-time.png"
-  },
-  {
-    id: 4,
-    question: "¿Cuántas latas de aluminio se necesitan para fabricar una bicicleta?",
-    options: [
-      "500",
-      "800",
-      "1,000",
-      "1,500"
-    ],
-    correctAnswer: 1,
-    explanation: "Se necesitan aproximadamente 800 latas de aluminio recicladas para fabricar una bicicleta.",
-    image: "/images/aluminum-bike.png"
-  },
-  {
-    id: 5,
-    question: "¿Qué país lidera el reciclaje de aluminio en el mundo?",
-    options: [
-      "Estados Unidos",
-      "Brasil",
-      "Alemania",
-      "Japón"
-    ],
-    correctAnswer: 1,
-    explanation: "Brasil tiene una de las tasas de reciclaje de aluminio más altas del mundo, superando el 98%.",
-    image: "/images/recycling-leader.png"
-  },
-  {
-    id: 6,
-    question: "¿Cuál es el principal beneficio ambiental del reciclaje de aluminio?",
-    options: [
-      "Reducción de costos",
-      "Ahorro de energía",
-      "Menor contaminación del agua",
-      "Conservación de minerales"
-    ],
-    correctAnswer: 1,
-    explanation: "El principal beneficio ambiental es el ahorro de energía, que reduce significativamente las emisiones de gases de efecto invernadero.",
-    image: "/images/environment-benefit.png"
-  },
-  {
-    id: 7,
-    question: "¿Qué proceso se utiliza para separar el aluminio de otros materiales en los centros de reciclaje?",
-    options: [
-      "Filtración",
-      "Magnetismo",
-      "Corriente de Foucault",
-      "Centrifugación"
-    ],
-    correctAnswer: 2,
-    explanation: "Se utiliza la corriente de Foucault, un proceso basado en campos magnéticos para separar el aluminio de otros materiales.",
-    image: "/images/separation-process.png"
-  },
-  {
-    id: 8,
-    question: "¿Qué impacto tiene el reciclaje de aluminio en el consumo de agua?",
-    options: [
-      "Ahorra el 20% del agua",
-      "Ahorra el 40% del agua",
-      "Ahorra el 90% del agua",
-      "No afecta el consumo de agua"
-    ],
-    correctAnswer: 2,
-    explanation: "El reciclaje de aluminio puede ahorrar hasta el 90% del agua que se usaría en la producción primaria.",
-    image: "/images/water-saving.png"
-  },
-  {
-    id: 9,
-    question: "¿Qué producto es el más reciclado a nivel mundial?",
-    options: [
-      "Botellas de plástico",
-      "Latas de aluminio",
-      "Papel y cartón",
-      "Vidrio"
-    ],
-    correctAnswer: 1,
-    explanation: "Las latas de aluminio son el producto más reciclado a nivel mundial debido a su alto valor y facilidad de reciclaje.",
-    image: "/images/most-recycled.png"
-  },
-  {
-    id: 10,
-    question: "¿Cuál es el récord de reciclaje de latas en un solo día en el mundo?",
-    options: [
-      "500 millones",
-      "1,000 millones",
-      "1,500 millones",
-      "2,000 millones"
-    ],
-    correctAnswer: 1,
-    explanation: "El récord de reciclaje de latas en un solo día es de aproximadamente 500 millones en varios países combinados.",
-    image: "/images/recycling-record.png"
+    explanation: "Una lata de aluminio tarda entre 200 y 500 años en descomponerse en la naturaleza."
   }
 ];
 
@@ -143,7 +49,7 @@ export const Trivia = () => {
   const [showResults, setShowResults] = useState(false);
   const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
   const [showExplanation, setShowExplanation] = useState(false);
-  const [userInfo, setUserInfo] = useState<{ email: string; instagram: string } | null>(null);
+  const [userInfo, setUserInfo] = useState<{email: string, instagram: string} | null>(null);
 
   const handleLogin = async (email: string, instagram: string) => {
     setUserInfo({ email, instagram });
@@ -154,7 +60,7 @@ export const Trivia = () => {
   const handleAnswer = (answerIndex: number) => {
     setSelectedAnswer(answerIndex);
     setShowExplanation(true);
-
+    
     if (answerIndex === questions[currentQuestion].correctAnswer) {
       setScore(score + 1);
     }
@@ -177,33 +83,35 @@ export const Trivia = () => {
     try {
       const { data: authData, error: authError } = await supabase.auth.signUp({
         email: userInfo.email,
-        password: Math.random().toString(36).slice(-8)
+        password: Math.random().toString(36).slice(-8),
       });
 
       if (authError) throw authError;
 
-      const { error: resultError } = await supabase.from('trivia_results').insert({
-        user_id: authData.user?.id,
-        instagram_handle: userInfo.instagram,
-        score: score,
-        total_questions: questions.length,
-        percentage: (score / questions.length) * 100
-      });
+      const { error: resultError } = await supabase
+        .from('trivia_results')
+        .insert({
+          user_id: authData.user?.id,
+          instagram_handle: userInfo.instagram,
+          score: score,
+          total_questions: questions.length,
+          percentage: (score / questions.length) * 100
+        });
 
       if (resultError) throw resultError;
 
       const resultadosDetallados = `
-        ## Resultados de la Trivia - ${userInfo.instagram}
+Resultados de la Trivia - ${userInfo.instagram}
+----------------------------------------
+Usuario: ${userInfo.instagram}
+Email: ${userInfo.email}
+Fecha: ${new Date().toLocaleDateString()}
+Hora: ${new Date().toLocaleTimeString()}
 
-        Usuario: ${userInfo.instagram}
-        Email: ${userInfo.email}
-        Fecha: ${new Date().toLocaleDateString()}
-        Hora: ${new Date().toLocaleTimeString()}
+PUNTUACIÓN FINAL: ${score} de ${questions.length} correctas
+Porcentaje de acierto: ${Math.round((score / questions.length) * 100)}%
 
-        PUNTUACIÓN FINAL: ${score} de ${questions.length} correctas
-        Porcentaje de acierto: ${Math.round((score / questions.length) * 100)}%
-
-        ¡Gracias por participar!
+¡Gracias por participar!
       `;
 
       window.location.href = `mailto:esse.ipsum.oficial@gmail.com?subject=🎮 Resultado Trivia - ${userInfo.instagram}&body=${encodeURIComponent(resultadosDetallados)}`;
@@ -224,47 +132,97 @@ export const Trivia = () => {
 
   if (showResults) {
     return (
-      <div className="results-container">
-        <h2>¡Trivia Completada!</h2>
-        <p>Obtuviste {score} de {questions.length} respuestas correctas</p>
-        <p>Porcentaje de acierto: {Math.round((score / questions.length) * 100)}%</p>
-        <p>
-          ¡No olvides tomar una captura de pantalla y compartirla en tu historia de Instagram etiquetando a @neo.reto!
-        </p>
-        <button className="share-button" onClick={() => alert('Función de compartir en Instagram próximamente.')}>Compartir en Instagram</button>
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
+        <div className="bg-white rounded-lg shadow-xl p-8 max-w-md w-full">
+          <h2 className="text-2xl font-bold text-gray-800 mb-4">¡Trivia Completada!</h2>
+          <p className="text-lg text-gray-600 mb-4">
+            Obtuviste {score} de {questions.length} respuestas correctas
+          </p>
+          <p className="text-gray-600 mb-6">
+            Porcentaje de acierto: {Math.round((score / questions.length) * 100)}%
+          </p>
+          <div className="space-y-4">
+            <p className="text-sm text-gray-500">
+              ¡No olvides tomar una captura de pantalla y compartirla en tu historia de Instagram etiquetando a @neo.reto!
+            </p>
+            <a
+              href="https://www.instagram.com/neo.reto/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block w-full bg-gradient-to-r from-purple-600 to-pink-600 text-white text-center py-3 rounded-lg font-semibold hover:from-purple-700 hover:to-pink-700 transition-colors"
+            >
+              Compartir en Instagram
+            </a>
+          </div>
+        </div>
       </div>
     );
   }
 
   return (
-    <div className="trivia-container">
-      <h2>{questions[currentQuestion].question}</h2>
-      <img src={questions[currentQuestion].image} alt="Question" className="question-image" />
-      <div className="options-container">
-        {questions[currentQuestion].options.map((option, index) => (
-          <button
-            key={index}
-            onClick={() => handleAnswer(index)}
-            disabled={selectedAnswer !== null}
-            className={
-              selectedAnswer === index
-                ? index === questions[currentQuestion].correctAnswer
-                  ? 'correct-option'
-                  : 'incorrect-option'
-                : 'default-option'
-            }
-          >
-            {option}
-          </button>
-        ))}
-      </div>
-      {showExplanation && (
-        <div className="explanation-container">
-          <p>{questions[currentQuestion].explanation}</p>
-          <button onClick={handleNextQuestion}>Siguiente pregunta</button>
+    <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
+      <div className="bg-white rounded-lg shadow-xl p-8 max-w-2xl w-full">
+        <div className="mb-8">
+          <div className="flex justify-between items-center mb-4">
+            <span className="text-sm text-gray-500">
+              Pregunta {currentQuestion + 1} de {questions.length}
+            </span>
+            <span className="text-sm text-gray-500">
+              Puntaje: {score}
+            </span>
+          </div>
+          <div className="w-full bg-gray-200 rounded-full h-2">
+            <div
+              className="bg-green-600 h-2 rounded-full transition-all duration-300"
+              style={{ width: `${((currentQuestion + 1) / questions.length) * 100}%` }}
+            ></div>
+          </div>
         </div>
-      )}
+
+        <h2 className="text-xl font-bold text-gray-800 mb-6">
+          {questions[currentQuestion].question}
+        </h2>
+
+        <div className="space-y-4 mb-6">
+          {questions[currentQuestion].options.map((option, index) => (
+            <button
+              key={index}
+              onClick={() => handleAnswer(index)}
+              disabled={selectedAnswer !== null}
+              className={`w-full p-4 text-left rounded-lg transition-colors ${
+                selectedAnswer === null
+                  ? 'hover:bg-gray-50 border border-gray-200'
+                  : selectedAnswer === index
+                  ? index === questions[currentQuestion].correctAnswer
+                    ? 'bg-green-100 border-2 border-green-500'
+                    : 'bg-red-100 border-2 border-red-500'
+                  : index === questions[currentQuestion].correctAnswer
+                  ? 'bg-green-100 border-2 border-green-500'
+                  : 'bg-gray-50 border border-gray-200'
+              }`}
+            >
+              {option}
+            </button>
+          ))}
+        </div>
+
+        {showExplanation && (
+          <div className="mb-6 p-4 bg-blue-50 rounded-lg">
+            <p className="text-blue-800">
+              {questions[currentQuestion].explanation}
+            </p>
+          </div>
+        )}
+
+        {selectedAnswer !== null && (
+          <button
+            onClick={handleNextQuestion}
+            className="w-full bg-green-600 text-white py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors"
+          >
+            {currentQuestion < questions.length - 1 ? 'Siguiente Pregunta' : 'Ver Resultados'}
+          </button>
+        )}
+      </div>
     </div>
   );
 };
-
