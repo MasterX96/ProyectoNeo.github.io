@@ -19,7 +19,7 @@ export const blogPosts = [
     excerpt: 'La historia detrás de este proyecto ambiental y sus ambiciosos objetivos.',
     content: `Todo comenzó con una simple observación: la cantidad de latas de aluminio que terminaban en la basura común. Esta realidad me llevó a investigar sobre el impacto ambiental del aluminio y su potencial de reciclaje.
 
-    El desafío nació como una iniciativa personal para demostrar que una sola persona puede hacer la diferencia. Comenzamos con una meta ambiciosa: recolectar 100,000 latas en un año.
+    El desafío nació como una iniciativa personal para demostrar que una sola persona puede hacer la diferencia, sin embargo, si trabajamos juntos y unidos a un mismo objetivo haremos la verdadera diferencia e impacto ambiental positivo para el presente y futuro. Comenzamos con una meta ambiciosa: recolectar 100,000 latas en un año.
 
     Lo que empezó como un proyecto individual rápidamente se convirtió en un movimiento comunitario, inspirando a otros a unirse y ser parte del cambio.`,
     imageUrl: 'https://images.unsplash.com/photo-1616781677825-3c8cfc2f79a6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'
